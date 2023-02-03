@@ -75,3 +75,27 @@ body {
   .footer-list li {
     padding-bottom: 20px;
   }
+
+  .circle {
+    width: 100px;
+    height: 100px;
+    margin : 50px auto;
+    border-radius: 50px;
+    background: #ed93b0;
+    animation: mochimochi 1s infinite;
+ }
+ 
+ @keyframes mochimochi {
+   0% {
+     transform: scale(1, 0.8);
+   }
+   20% {
+     transform: scale(0.8, 1.1);
+   }
+   90% {
+     transform: scale(1, 1);
+   }
+   100% {
+     transform: scale(1, 0.8);
+   }
+ }
