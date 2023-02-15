@@ -40,7 +40,7 @@ body {
   }
   
  
-  /* inputとtextareaのCSSを指定してください */
+  
   input, textarea {
     width: 400px;
     margin-top: 10px;
@@ -50,7 +50,7 @@ body {
     border: 1px solid #bfce;
   }
   
-  /* contact-submitのCSSを指定してください */
+  
   .contact-submit {
     background-color: #bfce;
     color: #889eab;
