@@ -99,3 +99,6 @@ body {
      transform: scale(1, 0.8);
    }
  }
+body {
+background-color:white;
+}
