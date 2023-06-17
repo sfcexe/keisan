@@ -77,7 +77,7 @@ function searchImages() {
 
     // API設定
     const baseUrl = 'https://pixabay.com/api/';
-    const apiKey = '37432611-69a1b7d72bf9bd373d4dec749'; // ここに自分のPixabay APIキーを入力します
+    const apiKey = '37432611-69a1b7d72bf9bd373d4dec749'; 
 
     // APIリクエストURL構築
     const url = `${baseUrl}?key=${apiKey}&q=${encodeURIComponent(query)}`;
