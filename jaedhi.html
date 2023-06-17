@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TypeKeisan</title>
+  <style>
+    .green {
+        background-color: rgba(158, 199, 168, 0.933);
+        width: 100%;
+        height: 70px;
+        font-size: 40px;
+        color: #fff;
+        font-family: "Avenir Next";
+    }
+    .TypeKeisan {
+        margin-left:40px ;
+        margin-top: 9px;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: "Avenir Next";
+    }
+
+    #container {
+      display: flex;
+      justify-content: space-between;
+      width: 800px;
+      margin-top: 20px;
+    }
+
+    #pixabay-container {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    #chat-container {
+      flex: 1;
+    }
+
+    #chat-log {
+      height: 400px;
+      overflow-y: scroll;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+
+    .user-message {
+      background-color: #e6f7ff;
+      margin-bottom: 5px;
+      padding: 5px;
+    }
+
+    .bot-message {
+      background-color: #f2f2f2;
+      margin-bottom: 5px;
+      padding: 5px;
+    }
+
+    #user-input {
+      width: 100%;
+      padding: 5px;
+    }
+
+    button {
+      padding: 5px 10px;
+    }
+
+    #imageResults {
+      margin-top: 20px;
+    }
+
+    #imageResults img {
+      display: block;
+      margin-bottom: 10px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .calc-container {
+      margin-bottom: 20px;
+    }
+
+    .calc-container form {
+      margin-bottom: 10px;
+    }
+
+    .calc-container p {
+      margin: 0;
+    }
+
+    .calc-container input[type="number"] {
+      width: 60px;
+    }
+
+    .calc-container output {
+      font-weight: bold;
+    }
+    /* 全体のコンテナ */
+#container {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 画像検索コンテナ */
+#pixabay-container {
+  flex: 1;
+  margin-right: 20px;
+}
+
+h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#imageResults {
+  margin-top: 20px;
+}
+
+#imageResults img {
+  display: block;
+  margin-bottom: 10px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* チャットボットコンテナ */
+#chat-container {
+  flex: 1;
+}
+
+#chat-log {
+  height: 400px;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.user-message {
+  background-color: #e6f7ff;
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.bot-message {
+  background-color: #f2f2f2;
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#user-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+#user-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+#user-input::placeholder {
+  color: #999;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* 計算フォーム */
+.calc-container {
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+input[type="number"] {
+  width: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  border:1px solid #ccc;
+  font-size: 16px;
+}
+
+output {
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-top: 5px;
+  background-color: #f2f2f2;
+}
+.calc-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.calc-container form {
+  flex-basis: calc(50% - 10px);
+  margin-bottom: 10px;
+}
+.circle {
+    width: 100px;
+    height: 100px;
+    margin : 50px auto;
+    border-radius: 50px;
+    background: #ed93b0;
+    animation: mochimochi 1s infinite;
+ }
+ 
+ @keyframes mochimochi {
+   0% {
+     transform: scale(1, 0.8);
+   }
+   20% {
+     transform: scale(0.8, 1.1);
+   }
+   90% {
+     transform: scale(1, 1);
+   }
+   100% {
+     transform: scale(1, 0.8);
+   }
+ }
+  </style>
+</head>
+<body>
+    <div class="green"><div class="TypeKeisan">TypeKeisan</div> </div>
+    <div class="classic">classic版はこちら<a>https://google.com</a></div>
+    <h1 style="font-size: 70px;">The calculator<span><p class="circle"></p></span></h1>
+  <div class="calc-container">
+    <form onsubmit="return false" oninput="o1.value = a1.valueAsNumber + b1.valueAsNumber">
+      <p>2つの和</p>
+      <input name="a1" type="number">
+      +
+      <input name="b1" type="number">
+      =
+      <output name="o1">計算結果がここに表示されます</output>
+    </form>
+
+    <form onsubmit="return false" oninput="o2.value = a2.valueAsNumber - b2.valueAsNumber">
+      <p>2つの差</p>
+      <input name="a2" type="number">
+      -
+      <input name="b2" type="number">
+      =
+      <output name="o2">計算結果がここに表示されます</output>
+    </form>
+
+    <form onsubmit="return false" oninput="o3.value = a3.valueAsNumber * b3.valueAsNumber">
+      <p>2つの積</p>
+      <input name="a3" type="number">
+      ×
+      <input name="b3" type="number">
+      =
+      <output name="o3">計算結果がここに表示されます</output>
+    </form>
+    <form onsubmit="return false" oninput="o4.value = a4.valueAsNumber / b4.valueAsNumber">
+        <p>2つの商</p>
+        <input name="a4" type="number">
+        ÷
+        <input name="b4" type="number">
+        =
+        <output name="o4">計算結果がここに表示されます</output>
+      </form>
+    </div>
+    <div id="container">
+      <div id="pixabay-container">
+        <h2>画像検索</h2>
+        <input type="text" id="searchInput" placeholder="検索してね">
+        <button onclick="searchImages()">検索</button>
+        <div id="imageResults"></div>
+      </div>
+      <div id="chat-container">
+        <h2>チャットボット</h2>
+        <div id="chat-log"></div>
+        <input type="text" id="user-input" />
+        <button onclick="sendMessage()">送信</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+  </html>      
