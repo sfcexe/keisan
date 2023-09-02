@@ -335,9 +335,9 @@ button:hover {
     </div>
     <div class="tab-menu">
       <div onclick="showContent('HOME')"></div>
-      <div class="tab" onclick="showContent('calculator')">電卓</div>
-      <div class="tab" onclick="showContent('image-search')">画像検索</div>
-      <div class="tab" onclick="showContent('memo')">メモ帳</div>
+      <div class="tab" onclick="showContent('calculator')">Calc</div>
+      <div class="tab" onclick="showContent('image-search')">Image search</div>
+      <div class="tab" onclick="showContent('memo')">Notepad</div>
     </div>
 
 
@@ -347,38 +347,38 @@ button:hover {
       <h1 style="font-size: 70px;">The calculator</h1>
       <div class="calc-container">
         <form onsubmit="return false" oninput="o1.value = a1.valueAsNumber + b1.valueAsNumber">
-          <p>2つの和</p>
+          <p>Sum</p>
           <input name="a1" type="number">
           +
           <input name="b1" type="number">
           =
-          <output name="o1">計算結果</output>
+          <output name="o1">result</output>
         </form>
 
         <form onsubmit="return false" oninput="o2.value = a2.valueAsNumber - b2.valueAsNumber">
-          <p>2つの差</p>
+          <p>Difference</p>
           <input name="a2" type="number">
           -
           <input name="b2" type="number">
           =
-          <output name="o2">計算結果</output>
+          <output name="o2">result</output>
         </form>
     
         <form onsubmit="return false" oninput="o3.value = a3.valueAsNumber * b3.valueAsNumber">
-          <p>2つの積</p>
+          <p>Product</p>
           <input name="a3" type="number">
           ×
           <input name="b3" type="number">
           =
-          <output name="o3">計算結果</output>
+          <output name="o3">result</output>
         </form>
         <form onsubmit="return false" oninput="o4.value = a4.valueAsNumber / b4.valueAsNumber">
-            <p>2つの商</p>
+            <p>Quotient</p>
             <input name="a4" type="number">
             ÷
             <input name="b4" type="number">
             =
-            <output name="o4">計算結果</output>
+            <output name="o4">result</output>
           </form>
         </div>
     </div>
@@ -386,21 +386,21 @@ button:hover {
       <!-- ここに画像検索のコンテンツを配置 -->
       <div id="container">
         <div id="pixabay-container">
-          <h2>画像検索</h2>
-          <input type="text" id="searchInput" placeholder="検索してね">
-          <button onclick="searchImages()">検索</button>
+          <h2>Image search</h2>
+          <input type="text" id="searchInput" placeholder="Let's search">
+          <button onclick="searchImages()">Search</button>
           <div id="imageResults"></div>
         </div>
       </div>
     </div>
     <div id="memo" class="tab-content">
       <div class="container">
-        <h1>メモ帳</h1>
-        <textarea id="memo-text" placeholder="ここにメモを入力してください"></textarea>
-        <button id="save-button">保存</button>
-        <button id="clear-button">クリア</button>
+        <h1>Notepad</h1>
+        <textarea id="memo-text" placeholder="Let's Write!"></textarea>
+        <button id="save-button">Keep</button>
+        <button id="clear-button">Clear</button>
         <div id="memo-list">
-            <!-- メモが表示される場所 -->
+           
         </div>
       </div>
     </div>
@@ -411,7 +411,7 @@ button:hover {
     <div class="footer">
       <div class="footer-logo">simple useful tools</div>
       <div class="footer-list">
-        <ul><li><a href="https://sfcexe.github.io/classic" style="text-decoration:none;">Old TypeKeisan</a></li></ul>
+        <ul><li><a href="https://sfcexe.github.io/classic" style="text-decoration:none;">Old tool</a></li></ul>
       </div>
     </div>
     <!-- JavaScriptのコード -->
