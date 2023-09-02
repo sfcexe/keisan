@@ -1,1 +1,107 @@
-const _0x28127f=_0x22fa;(function(_0x2699e0,_0x1b68b5){const _0x5a140c=_0x22fa,_0x453cda=_0x2699e0();while(!![]){try{const _0x46e982=-parseInt(_0x5a140c(0xf0))/0x1*(-parseInt(_0x5a140c(0x10a))/0x2)+parseInt(_0x5a140c(0xe1))/0x3+-parseInt(_0x5a140c(0xf8))/0x4*(-parseInt(_0x5a140c(0xe5))/0x5)+-parseInt(_0x5a140c(0xfb))/0x6+parseInt(_0x5a140c(0xdb))/0x7+parseInt(_0x5a140c(0xf7))/0x8+-parseInt(_0x5a140c(0xe2))/0x9*(parseInt(_0x5a140c(0x101))/0xa);if(_0x46e982===_0x1b68b5)break;else _0x453cda['push'](_0x453cda['shift']());}catch(_0x5b7f14){_0x453cda['push'](_0x453cda['shift']());}}}(_0x5826,0xd170c));let chatLog=[];function sendMessage(){const _0x429ad1=_0x22fa;let _0x36ca75=document[_0x429ad1(0x107)](_0x429ad1(0x103))['value'];chatLog['push']({'user':!![],'message':_0x36ca75}),renderChatLog(),generateBotResponse(_0x36ca75),document[_0x429ad1(0x107)](_0x429ad1(0x103))[_0x429ad1(0xdd)]='';}function renderChatLog(){const _0x1eb9ae=_0x22fa;let _0x1dd985=document[_0x1eb9ae(0x107)]('chat-log');_0x1dd985[_0x1eb9ae(0xfa)]='';for(let _0x2f9ca7=0x0;_0x2f9ca7<chatLog[_0x1eb9ae(0x102)];_0x2f9ca7++){let _0x2df281=document[_0x1eb9ae(0x108)](_0x1eb9ae(0xf1));_0x2df281['classList'][_0x1eb9ae(0xf6)](chatLog[_0x2f9ca7][_0x1eb9ae(0xe4)]?_0x1eb9ae(0xf5):_0x1eb9ae(0xfd)),_0x2df281[_0x1eb9ae(0x104)]=chatLog[_0x2f9ca7][_0x1eb9ae(0xff)],_0x1dd985['appendChild'](_0x2df281);}}document[_0x28127f(0x107)]('user-input')[_0x28127f(0xe7)](_0x28127f(0xe3),function(_0x44b56f){const _0x265719=_0x28127f;_0x44b56f[_0x265719(0x10c)]===_0x265719(0xde)&&sendMessage();});function _0x22fa(_0x969245,_0x34fc61){const _0x582624=_0x5826();return _0x22fa=function(_0x22fa4e,_0x42a36f){_0x22fa4e=_0x22fa4e-0xd9;let _0x5302a1=_0x582624[_0x22fa4e];return _0x5302a1;},_0x22fa(_0x969245,_0x34fc61);}function generateBotResponse(_0x4fd9cf){const _0x12efd8=_0x28127f;let _0xc03ddb;if(_0x4fd9cf['includes'](_0x12efd8(0x100))||_0x4fd9cf['includes'](_0x12efd8(0x10e)))_0xc03ddb=_0x12efd8(0x106);else{if(_0x4fd9cf[_0x12efd8(0xea)](_0x12efd8(0x109)))_0xc03ddb=_0x12efd8(0xe9);else{if(_0x4fd9cf['includes'](_0x12efd8(0xee))||_0x4fd9cf[_0x12efd8(0xea)]('感謝'))_0xc03ddb=_0x12efd8(0xe8);else{if(_0x4fd9cf[_0x12efd8(0xea)](_0x12efd8(0xf9))||_0x4fd9cf['includes'](_0x12efd8(0xda)))_0xc03ddb=_0x12efd8(0x10b);else{if(_0x4fd9cf[_0x12efd8(0xea)]('天気'))_0xc03ddb=_0x12efd8(0xfe);else{if(_0x4fd9cf[_0x12efd8(0xea)]('好きな色は何ですか'))_0xc03ddb=_0x12efd8(0xeb);else _0x4fd9cf[_0x12efd8(0xea)](_0x12efd8(0xfc))?_0xc03ddb=_0x12efd8(0xe0):_0xc03ddb=_0x12efd8(0x10d);}}}}}chatLog['push']({'user':![],'message':_0xc03ddb}),renderChatLog();}function searchImages(){const _0x197471=_0x28127f,_0x292479=document[_0x197471(0x107)](_0x197471(0xdc)),_0x2f87b6=_0x292479[_0x197471(0xdd)],_0x3296fb=_0x197471(0xf2),_0x4da41e='37432611-69a1b7d72bf9bd373d4dec749',_0x39cf18=_0x3296fb+_0x197471(0xe6)+_0x4da41e+_0x197471(0xf3)+encodeURIComponent(_0x2f87b6);fetch(_0x39cf18)[_0x197471(0xd9)](_0x22f85a=>_0x22f85a['json']())['then'](_0x44b6a4=>displayImages(_0x44b6a4[_0x197471(0xec)]))[_0x197471(0xed)](_0x5e4825=>console[_0x197471(0x105)](_0x5e4825));}function _0x5826(){const _0x30fbbc=['名前は','1283583nWuneU','searchInput','value','Enter','forEach','私は人工知能ですので、年齢という概念はありません。','1767918sfBMwr','163521MHppnB','keyup','user','38185eMJXab','?key=','addEventListener','どういたしまして！お手伝いできてうれしいです。','はい、元気です！お尋ねいただきありがとうございます。','includes','青です。','hits','catch','ありがとう','webformatURL','2qlFMLT','div','https://pixabay.com/api/','&q=','appendChild','user-message','add','4798656jzPmvn','868VqvGMJ','名前は？','innerHTML','7972698YzEvtL','何歳ですか','bot-message','天気ですね。申し訳ありませんが、私は天気情報を提供することができません。','message','こんにちは','710IzGNdB','length','user-input','innerText','log','こんにちは！お元気ですか？','getElementById','createElement','お元気ですか','446914vAsQCN','私はチャットボットです。','key','申し訳ありません、よく理解できませんでした。','こんばんは','then'];_0x5826=function(){return _0x30fbbc;};return _0x5826();}function displayImages(_0x5dce5a){const _0x50e0b6=_0x28127f,_0x19f014=document[_0x50e0b6(0x107)]('imageResults');_0x19f014['innerHTML']='',_0x5dce5a[_0x50e0b6(0xdf)](_0x474a07=>{const _0x16b0f7=_0x50e0b6,_0x2e5f88=document[_0x16b0f7(0x108)]('img');_0x2e5f88['src']=_0x474a07[_0x16b0f7(0xef)],_0x19f014[_0x16b0f7(0xf4)](_0x2e5f88);});}
+// log保持
+let chatLog = [];
+
+// sendするよ!
+function sendMessage() {
+    // 入力取得
+    let userInput = document.getElementById("user-input").value;
+
+    // ログに追加(ユーザーからの入力を)
+    chatLog.push({ user: true, message: userInput });
+
+    // ログ更新
+    renderChatLog();
+
+    
+    generateBotResponse(userInput);
+
+    // 入力フィールドクリア
+    document.getElementById("user-input").value = "";
+}
+
+// 描画
+function renderChatLog() {
+    let chatLogElement = document.getElementById("chat-log");
+    chatLogElement.innerHTML = "";
+
+    for (let i = 0; i < chatLog.length; i++) {
+        let messageElement = document.createElement("div");
+        messageElement.classList.add(chatLog[i].user ? "user-message" : "bot-message");
+        messageElement.innerText = chatLog[i].message;
+        chatLogElement.appendChild(messageElement);
+    }
+}
+
+// Enter着火
+document.getElementById("user-input").addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+});
+
+// 応答せよ...的な関数
+function generateBotResponse(userInput) {
+    let botResponse;
+
+    
+
+    if (userInput.includes("こんにちは") || userInput.includes("こんばんは")) {
+        botResponse = "こんにちは！お元気ですか？";
+    } else if (userInput.includes("お元気ですか")) {
+        botResponse = "はい、元気です！お尋ねいただきありがとうございます。";
+    } else if (userInput.includes("ありがとう") || userInput.includes("感謝")) {
+        botResponse = "どういたしまして！お手伝いできてうれしいです。";
+    } else if (userInput.includes("名前は？") || userInput.includes("名前は")) {
+        botResponse = "私はチャットボットです。";
+    } else if (userInput.includes("天気")) {
+        botResponse = "天気ですね。申し訳ありませんが、私は天気情報を提供することができません。";
+    } else if (userInput.includes("好きな色は何ですか")) {
+        botResponse = "青です。";
+    } else if (userInput.includes("何歳ですか")) {
+        botResponse = "私は人工知能ですので、年齢という概念はありません。";
+    } else {
+        botResponse = "申し訳ありません、よく理解できませんでした。";
+    }
+
+    
+    chatLog.push({ user: false, message: botResponse });
+
+    // 更新
+    renderChatLog();
+
+}
+
+function searchImages() {
+    const searchInput = document.getElementById('searchInput');
+    const query = searchInput.value;
+
+    // API設定
+    const baseUrl = 'https://pixabay.com/api/';
+    const apiKey = '37432611-69a1b7d72bf9bd373d4dec749'; 
+
+    // APIリクエストURL構築
+    const url = `${baseUrl}?key=${apiKey}&q=${encodeURIComponent(query)}`;
+
+    // APIにリクエスト送信
+    fetch(url)
+        .then(response => response.json())
+        .then(data => displayImages(data.hits))
+        .catch(error => console.log(error));
+}
+
+function displayImages(images) {
+    const imageResults = document.getElementById('imageResults');
+
+    // くりあ～
+    imageResults.innerHTML = '';
+
+    // 表示！
+    images.forEach(image => {
+        const imgElement = document.createElement('img');
+        imgElement.src = image.webformatURL;
+        imageResults.appendChild(imgElement);
+    });
+}
+
+
+

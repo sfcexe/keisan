@@ -1,339 +1,465 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
   <title>TypeKeisan</title>
   <meta name="google-site-verification" content="1YtuVHXqGWY9Qal3J8Ejy3lIAxX6_rRoTyOwqLSsEi0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="script.js"></script>
   <style>
-    .green {
-        background-color: rgba(158, 199, 168, 0.933);
-        width: 100%;
-        height: 70px;
-        font-size: 40px;
-        color: #fff;
-        font-family: "Avenir Next";
-    }
-    .TypeKeisan {
-        margin-left:40px ;
-        margin-top: 9px;
-    }
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-family: "Avenir Next";
-    }
-
-    #container {
-      display: flex;
-      justify-content: space-between;
-      width: 800px;
-      margin-top: 20px;
-    }
-
-    #pixabay-container {
-      flex: 1;
-      margin-right: 20px;
-    }
-
-    #chat-container {
-      flex: 1;
-    }
-
-    #chat-log {
-      height: 400px;
-      overflow-y: scroll;
-      border: 1px solid #ccc;
-      margin-bottom: 10px;
-      padding: 10px;
-    }
-
-    .user-message {
-      background-color: #e6f7ff;
-      margin-bottom: 5px;
-      padding: 5px;
-    }
-
-    .bot-message {
-      background-color: #f2f2f2;
-      margin-bottom: 5px;
-      padding: 5px;
-    }
-
-    #user-input {
-      width: 100%;
-      padding: 5px;
-    }
-
-    button {
-      padding: 5px 10px;
-    }
-
-    #imageResults {
-      margin-top: 20px;
-    }
-
-    #imageResults img {
-      display: block;
-      margin-bottom: 10px;
-      max-width: 100%;
-      height: auto;
-    }
-
-    .calc-container {
-      margin-bottom: 20px;
-    }
-
-    .calc-container form {
-      margin-bottom: 10px;
-    }
-
-    .calc-container p {
-      margin: 0;
-    }
-
-    .calc-container input[type="number"] {
-      width: 60px;
-    }
-
-    .calc-container output {
-      font-weight: bold;
-    }
-    /* 全体のコンテナ */
-#container {
-  display: flex;
-  justify-content: space-between;
-  width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* グローバルスタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* 横スクロールを無効にする */
 }
 
-/* 画像検索コンテナ */
-#pixabay-container {
-  flex: 1;
-  margin-right: 20px;
+/* ヘッダー */
+.green {
+    background-color: rgba(158, 199, 168, 0.933);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 36px;
 }
 
-h2 {
-  color: #333;
-  font-size: 24px;
-  margin-bottom: 10px;
+/* タイトル */
+h1 {
+    font-size: 70px;
+    text-align: center;
 }
 
-input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-#imageResults {
-  margin-top: 20px;
-}
-
-#imageResults img {
-  display: block;
-  margin-bottom: 10px;
-  max-width: 100%;
-  height: auto;
-}
-
-/* チャットボットコンテナ */
-#chat-container {
-  flex: 1;
-}
-
-#chat-log {
-  height: 400px;
-  overflow-y: scroll;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-  padding: 10px;
-}
-
-.user-message {
-  background-color: #e6f7ff;
-  margin-bottom: 5px;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.bot-message {
-  background-color: #f2f2f2;
-  margin-bottom: 5px;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-#user-input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-
-#user-input:focus {
-  outline: none;
-  border-color: #007bff;
-}
-
-#user-input::placeholder {
-  color: #999;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-/* 計算フォーム */
+/* 計算フォームのスタイル */
 .calc-container {
-  margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
 }
 
 form {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 80%; /* モバイルデバイスに合わせて幅を広げる */
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.933);
+    box-shadow: 0px 4px 8px rgba(180, 86, 86, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+
+form:hover {
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 p {
-  color: #333;
-  font-size: 18px;
-  margin-bottom: 5px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
 }
 
 input[type="number"] {
-  width: 100px;
-  padding: 10px;
-  border-radius: 5px;
-  border:1px solid #ccc;
-  font-size: 16px;
+    width: 80%; /* モバイルデバイスに合わせて幅を広げる */
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
 }
+
 
 output {
-  display: block;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  margin-top: 5px;
-  background-color: #f2f2f2;
-}
-.calc-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+    font-weight: bold;
+    font-size: 20px; /* モバイルデバイスに合わせてフォントサイズを小さくする */
+    margin-top: 10px;
 }
 
-.calc-container form {
-  flex-basis: calc(50% - 10px);
-  margin-bottom: 10px;
+
+/* 画像検索 */
+#pixabay-container {
+    margin-top: 20px;
+    text-align: center;
 }
-.circle {
-    width: 100px;
-    height: 100px;
-    margin : 50px auto;
-    border-radius: 50px;
-    background: #ed93b0;
-    animation: mochimochi 1s infinite;
- }
- 
- @keyframes mochimochi {
-   0% {
-     transform: scale(1, 0.8);
-   }
-   20% {
-     transform: scale(0.8, 1.1);
-   }
-   90% {
-     transform: scale(1, 1);
-   }
-   100% {
-     transform: scale(1, 0.8);
-   }
- }
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: rgba(158, 199, 168, 0.933);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: rgba(130, 162, 137, 0.933);
+}
+
+#imageResults {
+    margin-top: 20px;
+}
+
+#imageResults img {
+    display: block;
+    margin-bottom: 10px;
+    max-width: 100%;
+    height: auto;
+}
+/* タブメニューのスタイル */
+.tab-menu {
+  display: flex;
+  background-color: #333;
+  overflow-x: auto;
+}
+
+.tab {
+  padding: 10px 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.tab:hover {
+  background-color: #555;
+}
+
+/* コンテンツのスタイル */
+.tab-content {
+  display: none;
+  padding: 20px;
+}
+
+/* 最初のタブを表示 */
+#calculator {
+  display: block;
+}
+/* ヘッダー */
+.green {
+    background-color: rgba(158, 199, 168, 0.933);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 36px;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.green:hover {
+    background-color: rgba(158, 199, 168, 0.8); /* ホバー時の背景色 */
+    opacity: 0.9; /* ホバー時の透明度 */
+    animation: headerAnimation 1s infinite alternate; /* アニメーションを適用 */
+}
+
+@keyframes headerAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+  /* Header */
+  .header {
+    background-color: #009688; /* Change the background color to a modern color */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 36px;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+  }
+
+  .header:hover {
+    background-color: #00796B; /* Change the hover background color */
+    opacity: 0.9;
+    animation: headerAnimation 1s infinite alternate;
+  }
+
+  @keyframes headerAnimation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .animated-text {
+    margin-top: 20px; /* Adjust the margin-top for better alignment */
+    font-size: 36px; /* Reduce the font size for a more modern look */
+    color: #333;
+    opacity: 1;
+    animation: fadeIn 4s forwards;
+    cursor: pointer;
+    text-shadow: 0px 2px 2px rgba(0, 150, 136, 0.7); /* Update the text shadow */
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+      text-shadow: 0px 5px 5px rgba(0, 150, 136, 0.7); /* Update the text shadow */
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+.animated-text {
+    margin-top: 200px;
+    font-size: 60px;
+    color: black;
+    opacity: 0;
+    animation: fadeIn 4s forwards;
+    
+    cursor: pointer;
+    text-shadow: 0px 10px 10px rgba(199, 180, 158, 0.933);
+}
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }50% {
+              opacity: 1;
+                text-shadow: 0px 10px 10px rgba(158, 199, 168, 0.933);
+            }
+            100% {
+                opacity: 0;
+                display: none;
+            }
+        }
+        
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.footer {
+    margin-top: 600px;
+    background-color:rgba(158, 199, 168, 0.933);
+    color: #fff;
+    height: 120px;
+    padding: 40px;
+  }
+  
+  .footer-logo {
+    float: left;
+    font-size: 32px;
+  }
+  
+  .footer-list {
+    float: right;
+  }
+  
+  .footer-list li {
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+
   </style>
+   <style>
+    /* 全体のコンテナのスタイル */
+    .container {
+        width: 80%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* タイトルのスタイル */
+    h1 {
+        font-size: 24px;
+    }
+
+    /* メモ入力欄のスタイル */
+    /* メモ入力欄のスタイル */
+#memo-text {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    margin-bottom: 10px;
+    overflow: auto; /* テキストが溢れた場合にスクロールバーを表示 */
+}
+
+
+    /* ボタンのスタイル */
+    button {
+        padding: 10px 20px;
+        font-size: 18px;
+        margin: 5px;
+    }
+
+    /* メモ一覧のスタイル */
+    #memo-list {
+        text-align: left;
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+</style>
 </head>
 <body>
-
-
-    <div class="green"><div class="TypeKeisan">TypeKeisan</div> </div>
-  <div class="classic">classic版は<a href="https://sfcexe.github.io/classic/">こちら</a></div>
-    <h1 style="font-size: 70px;">The calculator<span><p class="circle"></p></span></h1>
-  <div class="calc-container">
-    <form onsubmit="return false" oninput="o1.value = a1.valueAsNumber + b1.valueAsNumber">
-      <p>2つの和</p>
-      <input name="a1" type="number">
-      +
-      <input name="b1" type="number">
-      =
-      <output name="o1">計算結果がここに表示されます</output>
-    </form>
-
-    <form onsubmit="return false" oninput="o2.value = a2.valueAsNumber - b2.valueAsNumber">
-      <p>2つの差</p>
-      <input name="a2" type="number">
-      -
-      <input name="b2" type="number">
-      =
-      <output name="o2">計算結果がここに表示されます</output>
-    </form>
-
-    <form onsubmit="return false" oninput="o3.value = a3.valueAsNumber * b3.valueAsNumber">
-      <p>2つの積</p>
-      <input name="a3" type="number">
-      ×
-      <input name="b3" type="number">
-      =
-      <output name="o3">計算結果がここに表示されます</output>
-    </form>
-    <form onsubmit="return false" oninput="o4.value = a4.valueAsNumber / b4.valueAsNumber">
-        <p>2つの商</p>
-        <input name="a4" type="number">
-        ÷
-        <input name="b4" type="number">
-        =
-        <output name="o4">計算結果がここに表示されます</output>
-      </form>
+    <div class="green">
+      <div class="header">
+        <div class="TypeKeisan">TypeKeisan</div>
+      </div>      
     </div>
-    <div id="container">
-      <div id="pixabay-container">
-        <h2>画像検索</h2>
-        <input type="text" id="searchInput" placeholder="検索してね">
-        <button onclick="searchImages()">検索</button>
-        <div id="imageResults"></div>
-      </div>
-      <div id="chat-container">
-        <h2>チャットボット</h2>
-        <div id="chat-log"></div>
-        <input type="text" id="user-input" />
-        <button onclick="sendMessage()">送信</button>
+    <div class="tab-menu">
+      <div onclick="showContent('HOME')"></div>
+      <div class="tab" onclick="showContent('calculator')">電卓</div>
+      <div class="tab" onclick="showContent('image-search')">画像検索</div>
+      <div class="tab" onclick="showContent('memo')">メモ帳</div>
+    </div>
+
+
+
+    <div id="calculator" class="tab-content">
+      <!-- ここに電卓のコンテンツを配置 -->
+      <h1 style="font-size: 70px;">The calculator</h1>
+      <div class="calc-container">
+        <form onsubmit="return false" oninput="o1.value = a1.valueAsNumber + b1.valueAsNumber">
+          <p>2つの和</p>
+          <input name="a1" type="number">
+          +
+          <input name="b1" type="number">
+          =
+          <output name="o1">計算結果</output>
+        </form>
+
+        <form onsubmit="return false" oninput="o2.value = a2.valueAsNumber - b2.valueAsNumber">
+          <p>2つの差</p>
+          <input name="a2" type="number">
+          -
+          <input name="b2" type="number">
+          =
+          <output name="o2">計算結果</output>
+        </form>
+    
+        <form onsubmit="return false" oninput="o3.value = a3.valueAsNumber * b3.valueAsNumber">
+          <p>2つの積</p>
+          <input name="a3" type="number">
+          ×
+          <input name="b3" type="number">
+          =
+          <output name="o3">計算結果</output>
+        </form>
+        <form onsubmit="return false" oninput="o4.value = a4.valueAsNumber / b4.valueAsNumber">
+            <p>2つの商</p>
+            <input name="a4" type="number">
+            ÷
+            <input name="b4" type="number">
+            =
+            <output name="o4">計算結果</output>
+          </form>
+        </div>
+    </div>
+    <div id="image-search" class="tab-content">
+      <!-- ここに画像検索のコンテンツを配置 -->
+      <div id="container">
+        <div id="pixabay-container">
+          <h2>画像検索</h2>
+          <input type="text" id="searchInput" placeholder="検索してね">
+          <button onclick="searchImages()">検索</button>
+          <div id="imageResults"></div>
+        </div>
       </div>
     </div>
-    <script src="script.js"></script>
+    <div id="memo" class="tab-content">
+      <div class="container">
+        <h1>メモ帳</h1>
+        <textarea id="memo-text" placeholder="ここにメモを入力してください"></textarea>
+        <button id="save-button">保存</button>
+        <button id="clear-button">クリア</button>
+        <div id="memo-list">
+            <!-- メモが表示される場所 -->
+        </div>
+      </div>
+    </div>
+
+    <div id="HOME" class="tab-content"><h1 class="animated-text" id="welcome">Welcome to TypeKeisan!</h1>
+    </div>
+    <h2 style="text-align: center; text-shadow: 0px 5px 5px rgba(219, 184, 243, 0.933);">Choose the tool you want to use</h2>
+    <div class="footer">
+      <div class="footer-logo">TypeKeisan</div>
+      <div class="footer-list">
+        <li><a href="https://sfcexe.github.io/classic" style="text-decoration:none;">Old TypeKeisan</a></li>
+      </div>
+    </div>
+    <!-- JavaScriptのコード -->
+    <script>
+        // タブをクリックしてコンテンツを切り替える関数
+        function showContent(contentId) {
+            // すべてのコンテンツを非表示にする
+            var tabContents = document.querySelectorAll(".tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = "none";
+            }
+
+            // クリックされたタブに対応するコンテンツを表示する
+            var content = document.getElementById(contentId);
+            if (content) {
+                content.style.display = "block";
+            }
+        }
+
+        // 最初のタブを表示
+        showContent("HOME");
+    </script>
+    <script>
+   // ページが読み込まれたときに実行する処理
+window.addEventListener('DOMContentLoaded', () => {
+    const memoText = document.getElementById('memo-text');
+    const saveButton = document.getElementById('save-button');
+    const clearButton = document.getElementById('clear-button');
+    const memoList = document.getElementById('memo-list');
+
+    // 保存ボタンがクリックされたときの処理
+    saveButton.addEventListener('click', () => {
+        const text = memoText.value.trim();
+
+        if (text !== '') {
+            const memoItem = document.createElement('div');
+            memoItem.textContent = text;
+            memoList.appendChild(memoItem);
+            memoText.value = '';
+        }
+    });
+
+    // クリアボタンがクリックされたときの処理
+    clearButton.addEventListener('click', () => {
+        memoText.value = '';
+    });
+});
+
+</script>
   </body>
-  </html>      
+</html>
