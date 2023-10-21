@@ -182,6 +182,20 @@ button:hover {
         transform: scale(1);
     }
 }
+#search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#searchInput {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
 
   /* Header */
   .header {
@@ -266,7 +280,7 @@ button:hover {
 }
 .footer {
     margin-top: 600px;
-    background-color:black;
+    background-color:rgba(62, 63, 62, 0.933);
     color: #fff;
     height: 120px;
     padding: 40px;
@@ -326,6 +340,23 @@ button:hover {
         border: 1px solid #ccc;
         padding: 10px;
     }
+    .server {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff0000);
+            background-size: 200% 200%;
+            animation: gradientAnimation 10s linear infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+    
 </style>
 </head>
 <body>
@@ -334,14 +365,23 @@ button:hover {
         <div class="TypeKeisan">simple useful web tools</div>
       </div>      
     </div>
+    
+    
     <div class="tab-menu">
       <div onclick="showContent('HOME')"></div>
       <div class="tab" onclick="showContent('calculator')">Calc</div>
       <div class="tab" onclick="showContent('image-search')">Image search</div>
-      <div class="tab" onclick="showContent('memo')">Notepad</div>
+      <div class="tab" onclick="showContent('note')">Notepad</div>
+      <div class="tab" onclick="showContent('wiki')">Wikipadia-search</div>
+      <div class="tab" onclick="showContent('time')">Time</div>
+      <div class="tab" onclick="showContent('colorpick')">colorPicker</div>
+      <div class="tab" onclick="showContent('ScreenSeaver')">ScreenSeaver</div>
     </div>
 
-
+    <div id="search-container">
+      <input type="text" id="searchInput" placeholder="Search tool...">
+      <button onclick="searchTools()">検索</button>
+    </div>
 
     <div id="calculator" class="tab-content">
       <!-- ここに電卓のコンテンツを配置 -->
@@ -394,7 +434,7 @@ button:hover {
         </div>
       </div>
     </div>
-    <div id="memo" class="tab-content">
+    <div id="note" class="tab-content">
       <div class="container">
         <h1>Notepad</h1>
         <textarea id="memo-text" placeholder="Let's Write!"></textarea>
@@ -405,14 +445,54 @@ button:hover {
         </div>
       </div>
     </div>
-
+    <div id="wiki" class="tab-content">
+      <div class="container">
+        <p>Search by Wikipedia!</p>
+        <form id="searchForm" action="https://en.wikipedia.org/wiki/" method="get" target="_blank">
+          <input type="text" name="search" placeholder="search by wikipedia">
+          <button type="submit">Search</button>
+      </form>
+      </div>
+    </div>
+    <div id="time" class="tab-content">
+      <div class="container">
+        <p>Current time at Japan</p>
+        <p id="RealtimeClockArea2">00:00:00</p>
+        
+      </div>
+    </div>
+    <div id="colorpick" class="tab-content">
+      <div class="container">
+        <p>Color Picker</p>
+        <label for="colorPicker">Choose a color:</label>
+        <input type="color" id="colorPicker" onchange="changeColor(this.value)">
+        <div id="colorDisplay">Selected color will be displayed here</div>
+    
+        <script>
+            function changeColor(selectedColor) {
+                // カラーピッカーで選択された色を取得して表示
+                const colorDisplay = document.getElementById('colorDisplay');
+                colorDisplay.textContent = `Selected color: ${selectedColor}`;
+    
+                // 選択された色を背景色に設定
+                document.body.style.backgroundColor = selectedColor;
+            }
+        </script>
+      </div>
+    </div>
+    <div id="ScreenSeaver" class="tab-content">
+      <div class="container">
+        <p>Scroll down a bit and you should see a small screensaver.</p>
+        <div class="server"></div>
+      </div>
+    </div>
     <div id="HOME" class="tab-content"><h1 class="animated-text" id="welcome">Welcome to simple useful web tools!</h1>
     </div>
     <h2 style="text-align: center; text-shadow: 0px 5px 5px rgba(219, 184, 243, 0.933);">Choose the tool you want to use</h2>
     <div class="footer">
       <div class="footer-logo">simple useful web tools</div>
       <div class="footer-list">
-        <ul><li><a href="https://sfcexe.github.io/classic" style="text-decoration:none; color:white;">Old tool</a></li></ul>
+        <ul><li><a href="https://sfcexe.github.io/classic" style="text-decoration:none; color: #fff;">Old tool</a></li></ul>
       </div>
     </div>
     <!-- JavaScriptのコード -->
@@ -462,5 +542,80 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 </script>
+<script>
+  function searchTools() {
+  // 検索バーからキーワードを取得
+  const keyword = document.getElementById('searchInput').value.toLowerCase();
+  
+  // ツールのタブを非表示にする
+  const tabContents = document.querySelectorAll(".tab-content");
+  for (const tabContent of tabContents) {
+    tabContent.style.display = 'none';
+  }
+
+  // タブメニューからアクティブなクラスを削除する
+  const tabs = document.querySelectorAll(".tab");
+  for (const tab of tabs) {
+    tab.classList.remove('active');
+  }
+
+  // キーワードに一致するツールを表示する
+  const toolNames = ["calculator", "image-search", "note","Wikipadia-search","Time","ColorPicker"];
+  for (const toolName of toolNames) {
+    const toolContent = document.getElementById(toolName);
+    if (toolName.includes(keyword)) {
+      toolContent.style.display = 'block';
+    }
+  }
+}
+
+  function showContent(contentId) {
+  // すべてのタブを非アクティブにする
+  const tabs = document.querySelectorAll(".tab");
+  for (const tab of tabs) {
+    tab.classList.remove('active');
+  }
+
+  // クリックされたタブにアクティブなクラスを設定
+  const clickedTab = document.querySelector(`[onclick="showContent('${contentId}')"]`);
+  if (clickedTab) {
+    clickedTab.classList.add('active');
+  }
+
+  // すべてのコンテンツを非表示にする
+  const tabContents = document.querySelectorAll(".tab-content");
+  for (const tabContent of tabContents) {
+    tabContent.style.display = 'none';
+  }
+
+  // クリックされたタブに対応するコンテンツを表示する
+  const content = document.getElementById(contentId);
+  if (content) {
+    content.style.display = 'block';
+  }
+}
+
+</script>
+<script>
+    function set2fig(num) {
+   // 桁数が1桁だったら先頭に0を加えて2桁に調整する
+   var ret;
+   if( num < 10 ) { ret = "0" + num; }
+   else { ret = num; }
+   return ret;
+}
+function showClock2() {
+   var nowTime = new Date();
+   var nowHour = set2fig( nowTime.getHours() );
+   var nowMin  = set2fig( nowTime.getMinutes() );
+   var nowSec  = set2fig( nowTime.getSeconds() );
+   var msg = nowHour + ":" + nowMin + ":" + nowSec ;
+   document.getElementById("RealtimeClockArea2").innerHTML = msg;
+}
+setInterval('showClock2()',1000);
+    
+
+</script>
+
   </body>
 </html>
