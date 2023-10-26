@@ -39,63 +39,25 @@ document.getElementById("user-input").addEventListener("keyup", function (event)
     }
 });
 
-// 応答せよ...的な関数
-function generateBotResponse(userInput) {
-    let botResponse;
 
-    
-
-    if (userInput.includes("こんにちは") || userInput.includes("こんばんは")) {
-        botResponse = "こんにちは！お元気ですか？";
-    } else if (userInput.includes("お元気ですか")) {
-        botResponse = "はい、元気です！お尋ねいただきありがとうございます。";
-    } else if (userInput.includes("ありがとう") || userInput.includes("感謝")) {
-        botResponse = "どういたしまして！お手伝いできてうれしいです。";
-    } else if (userInput.includes("名前は？") || userInput.includes("名前は")) {
-        botResponse = "私はチャットボットです。";
-    } else if (userInput.includes("天気")) {
-        botResponse = "天気ですね。申し訳ありませんが、私は天気情報を提供することができません。";
-    } else if (userInput.includes("好きな色は何ですか")) {
-        botResponse = "青です。";
-    } else if (userInput.includes("何歳ですか")) {
-        botResponse = "私は人工知能ですので、年齢という概念はありません。";
-    } else {
-        botResponse = "申し訳ありません、よく理解できませんでした。";
-    }
-
-    
-    chatLog.push({ user: false, message: botResponse });
-
-    // 更新
-    renderChatLog();
-
-}
 
 function searchImages() {
-    const searchInput = document.getElementById('searchInput');
-    const query = searchInput.value;
+    const searchInputs = document.getElementById('searchInputs').value;
+    const apiKey = '37432611-69a1b7d72bf9bd373d4dec749'; // ご自身のPixabay APIキーに置き換えてください
+    const apiUrl = `https://pixabay.com/api/?key=${apiKey}&q=${encodeURIComponent(searchInputs)}`;
 
-    // API設定
-    const baseUrl = 'https://pixabay.com/api/';
-    const apiKey = '37432611-69a1b7d72bf9bd373d4dec749'; 
-
-    // APIリクエストURL構築
-    const url = `${baseUrl}?key=${apiKey}&q=${encodeURIComponent(query)}`;
-
-    // APIにリクエスト送信
-    fetch(url)
+    fetch(apiUrl)
         .then(response => response.json())
         .then(data => displayImages(data.hits))
         .catch(error => console.log(error));
 }
 
+
+
+
 function displayImages(images) {
     const imageResults = document.getElementById('imageResults');
-
-    // くりあ～
     imageResults.innerHTML = '';
-
-    // 表示！
     images.forEach(image => {
         const imgElement = document.createElement('img');
         imgElement.src = image.webformatURL;
